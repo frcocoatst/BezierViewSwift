@@ -13,6 +13,7 @@
 		7D1B6C0B1CE08E8B00609851 /* BezierViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B6C0A1CE08E8B00609851 /* BezierViewTests.swift */; };
 		7D1B6C161CE08E8B00609851 /* BezierViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B6C151CE08E8B00609851 /* BezierViewUITests.swift */; };
 		7D1B6C241CE08EBA00609851 /* BezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B6C231CE08EBA00609851 /* BezierView.swift */; };
+		7DE49F881D118578000A446C /* NSBezierPath+Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE49F871D118578000A446C /* NSBezierPath+Arrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		7D1B6C151CE08E8B00609851 /* BezierViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierViewUITests.swift; sourceTree = "<group>"; };
 		7D1B6C171CE08E8B00609851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D1B6C231CE08EBA00609851 /* BezierView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierView.swift; sourceTree = "<group>"; };
+		7DE49F871D118578000A446C /* NSBezierPath+Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Arrow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				7D1B6BFA1CE08E8B00609851 /* AppDelegate.swift */,
 				7D1B6C231CE08EBA00609851 /* BezierView.swift */,
+				7DE49F871D118578000A446C /* NSBezierPath+Arrow.swift */,
 				7D1B6BFC1CE08E8B00609851 /* Assets.xcassets */,
 				7D1B6BFE1CE08E8B00609851 /* MainMenu.xib */,
 				7D1B6C011CE08E8B00609851 /* Info.plist */,
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1B6BFB1CE08E8B00609851 /* AppDelegate.swift in Sources */,
+				7DE49F881D118578000A446C /* NSBezierPath+Arrow.swift in Sources */,
 				7D1B6C241CE08EBA00609851 /* BezierView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +479,7 @@
 				7D1B6C1C1CE08E8B00609851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D1B6C1D1CE08E8B00609851 /* Build configuration list for PBXNativeTarget "BezierViewTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +488,7 @@
 				7D1B6C1F1CE08E8B00609851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D1B6C201CE08E8B00609851 /* Build configuration list for PBXNativeTarget "BezierViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +497,7 @@
 				7D1B6C221CE08E8B00609851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
