@@ -118,9 +118,16 @@ class BezierView: NSView{
         // replaced by:
         
         // show resulting curve with Arrow
+        /*
         mycurve.appendBezierPath(NSBezierPath.curveWithArrow(startPoint, endPoint: endPoint,
             controlPoint1: controlPoint_1, controlPoint2: controlPoint_2,
             tailWidth: 4, headWidth: 10, headLength: 20))
+         */
+        
+        mycurve.appendBezierPath(NSBezierPath.curveFromPointtoPointWithcontrolPoints(startPoint, endPoint: endPoint,
+            controlPoint1: controlPoint_1, controlPoint2: controlPoint_2,
+            tailWidth: 1, headWidth: 10, headLength: 20))
+        
         
         // Draw the outline
         // NSColor.blueColor().set()
