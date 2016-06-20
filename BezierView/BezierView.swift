@@ -11,6 +11,9 @@ import Cocoa
 
 class BezierView: NSView{
     
+    let PADSIZE:CGFloat = 4.0
+    let SELECTRADIUS:CGFloat = 20
+    
     var controlPoint_1 = NSPoint()
     var controlPoint_2 = NSPoint()
     var startPoint = NSPoint()
@@ -62,40 +65,40 @@ class BezierView: NSView{
         cpath.removeAllPoints()
         mycurve.removeAllPoints()
  */
-        dotRect.origin.x = controlPoint_1.x - 2.0
-        dotRect.origin.y = controlPoint_1.y - 2.0
-        dotRect.size.width = 2 * 2.0
-        dotRect.size.height = 2 * 2.0
+        dotRect.origin.x = controlPoint_1.x - PADSIZE
+        dotRect.origin.y = controlPoint_1.y - PADSIZE
+        dotRect.size.width = 2 * PADSIZE
+        dotRect.size.height = 2 * PADSIZE
         
         NSColor.blueColor().set()
         cpath.appendBezierPathWithOvalInRect(dotRect)
         cpath.lineWidth = 1
         cpath.stroke()
         
-        dotRect.origin.x = controlPoint_2.x - 2.0
-        dotRect.origin.y = controlPoint_2.y - 2.0
-        dotRect.size.width = 2 * 2.0
-        dotRect.size.height = 2 * 2.0
+        dotRect.origin.x = controlPoint_2.x - PADSIZE
+        dotRect.origin.y = controlPoint_2.y - PADSIZE
+        dotRect.size.width = 2 * PADSIZE
+        dotRect.size.height = 2 * PADSIZE
         
         NSColor.blueColor().set()
         cpath.appendBezierPathWithOvalInRect(dotRect)
         cpath.lineWidth = 1
         cpath.stroke()
         
-        dotRect.origin.x = startPoint.x - 2.0
-        dotRect.origin.y = startPoint.y - 2.0
-        dotRect.size.width = 2 * 2.0
-        dotRect.size.height = 2 * 2.0
+        dotRect.origin.x = startPoint.x - PADSIZE
+        dotRect.origin.y = startPoint.y - PADSIZE
+        dotRect.size.width = 2 * PADSIZE
+        dotRect.size.height = 2 * PADSIZE
         
         NSColor.blueColor().set()
         cpath.appendBezierPathWithOvalInRect(dotRect)
         cpath.lineWidth = 1
         cpath.stroke()
         
-        dotRect.origin.x = endPoint.x - 2.0
-        dotRect.origin.y = endPoint.y - 2.0
-        dotRect.size.width = 2 * 2.0
-        dotRect.size.height = 2 * 2.0
+        dotRect.origin.x = endPoint.x - PADSIZE
+        dotRect.origin.y = endPoint.y - PADSIZE
+        dotRect.size.width = 2 * PADSIZE
+        dotRect.size.height = 2 * PADSIZE
         
         NSColor.blueColor().set()
         cpath.appendBezierPathWithOvalInRect(dotRect)
@@ -140,10 +143,10 @@ class BezierView: NSView{
         var aRect = NSRect()
         
         // test if startpoint is selected
-        aRect.origin.x = startPoint.x - 20.0;
-        aRect.origin.y = startPoint.y - 20.0;
-        aRect.size.width  = 2 * 20.0;
-        aRect.size.height = 2 * 20.0;
+        aRect.origin.x = startPoint.x - SELECTRADIUS;
+        aRect.origin.y = startPoint.y - SELECTRADIUS;
+        aRect.size.width  = 2 * SELECTRADIUS;
+        aRect.size.height = 2 * SELECTRADIUS;
         if (NSPointInRect(point, aRect) == true)
         {
             startpoint_selected = true;
@@ -152,10 +155,10 @@ class BezierView: NSView{
         else
         {
             // test if endpoint is selected
-            aRect.origin.x = endPoint.x - 20.0;
-            aRect.origin.y = endPoint.y - 20.0;
-            aRect.size.width  = 2*20.0;
-            aRect.size.height = 2*20.0;
+            aRect.origin.x = endPoint.x - SELECTRADIUS;
+            aRect.origin.y = endPoint.y - SELECTRADIUS;
+            aRect.size.width  = 2*SELECTRADIUS;
+            aRect.size.height = 2*SELECTRADIUS;
             if (NSPointInRect(point, aRect) == true)
             {
                 endpoint_selected = true;
@@ -164,10 +167,10 @@ class BezierView: NSView{
             else
             {
                 // test if controlpoint1 is selected
-                aRect.origin.x = controlPoint_1.x - 20.0;
-                aRect.origin.y = controlPoint_1.y - 20.0;
-                aRect.size.width  = 2*20.0;
-                aRect.size.height = 2*20.0;
+                aRect.origin.x = controlPoint_1.x - SELECTRADIUS;
+                aRect.origin.y = controlPoint_1.y - SELECTRADIUS;
+                aRect.size.width  = 2*SELECTRADIUS;
+                aRect.size.height = 2*SELECTRADIUS;
                 if (NSPointInRect(point, aRect) == true)
                 {
                     controlpoint1_selected = true;
@@ -176,10 +179,10 @@ class BezierView: NSView{
                 else
                 {
                     // test if controlpoint1 is selected
-                    aRect.origin.x = controlPoint_2.x - 20.0;
-                    aRect.origin.y = controlPoint_2.y - 20.0;
-                    aRect.size.width  = 2*20.0;
-                    aRect.size.height = 2*20.0;
+                    aRect.origin.x = controlPoint_2.x - SELECTRADIUS;
+                    aRect.origin.y = controlPoint_2.y - SELECTRADIUS;
+                    aRect.size.width  = 2*SELECTRADIUS;
+                    aRect.size.height = 2*SELECTRADIUS;
                     if (NSPointInRect(point, aRect) == true)
                     {
                         controlpoint2_selected = true;
