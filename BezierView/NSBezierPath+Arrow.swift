@@ -2,8 +2,8 @@
 //  NSBezierPath+Arrow.swift
 //  BezierView
 //
-//  Created by Friedrich HAEUPL on 15.06.16.
-//  Copyright © 2016 Friedrich HAEUPL. All rights reserved.
+//  Created by FH on 15.06.16.
+//  Copyright © 2016 FH. All rights reserved.
 //
 //  from: https://gist.github.com/mwermuth/07825df27ea28f5fc89a
 

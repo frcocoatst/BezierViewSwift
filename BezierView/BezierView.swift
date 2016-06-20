@@ -2,8 +2,8 @@
 //  BezierView.swift
 //  BezierView
 //
-//  Created by Friedrich HAEUPL on 09.05.16.
-//  Copyright © 2016 Friedrich HAEUPL. All rights reserved.
+//  Created by FH on 09.05.16.
+//  Copyright © 2016 FH. All rights reserved.
 //
 
 
