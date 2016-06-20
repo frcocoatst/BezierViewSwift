@@ -260,13 +260,4 @@ class BezierView: NSView{
         
         //needsDisplay = true
     }
-    /*
-     override var acceptsFirstResponder: Bool {
-     return true
-     }
-     
-     override func keyDown(theEvent: NSEvent) {
-     NSLog("key down is \(theEvent.description)") //system console should be displaying the keypress
-     }
-     */   
 }
