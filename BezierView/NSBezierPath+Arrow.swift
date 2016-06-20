@@ -18,62 +18,6 @@ import Foundation
 let kArrowPointCount = 7
 
 extension NSBezierPath {
-    /*
-     class func getAxisAlignedArrowPoints(inout points: Array<CGPoint>,
-     forLength: CGFloat,
-     tailWidth: CGFloat,
-     headWidth: CGFloat,
-     headLength: CGFloat ){
-     
-     let tailLength = forLength - headLength
-     points.append(CGPointMake(0, tailWidth/2))
-     points.append(CGPointMake(tailLength, tailWidth/2))
-     points.append(CGPointMake(tailLength, headWidth/2))
-     points.append(CGPointMake(forLength, 0))
-     points.append(CGPointMake(tailLength, -headWidth/2))
-     points.append(CGPointMake(tailLength, -tailWidth/2))
-     points.append(CGPointMake(0, -tailWidth/2))
-     
-     }
-     
-     
-     class func transformForStartPoint(startPoint: CGPoint,
-     endPoint: CGPoint,
-     length: CGFloat) -> CGAffineTransform{
-     
-     let cosine: CGFloat = (endPoint.x - startPoint.x)/length
-     let sine: CGFloat = (endPoint.y - startPoint.y)/length
-     
-     return CGAffineTransformMake(cosine, sine, -sine, cosine, startPoint.x, startPoint.y)
-     }
-     
-     
-     class func bezierPathWithArrowFromPoint(startPoint:CGPoint,
-     endPoint: CGPoint,
-     controlPoint1: NSPoint,
-     controlPoint2: NSPoint,
-     tailWidth: CGFloat,
-     headWidth: CGFloat,
-     headLength: CGFloat) -> NSBezierPath {
-     
-     let xdiff: Float = Float(endPoint.x) - Float(startPoint.x)
-     let ydiff: Float = Float(endPoint.y) - Float(startPoint.y)
-     let length = hypotf(xdiff, ydiff)
-     
-     var points = [CGPoint]()
-     self.getAxisAlignedArrowPoints(&points, forLength: CGFloat(length), tailWidth: tailWidth, headWidth: headWidth, headLength: headLength)
-     
-     var transform: CGAffineTransform = self.transformForStartPoint(startPoint, endPoint: endPoint, length:  CGFloat(length))
-     
-     var cgPath: CGMutablePathRef = CGPathCreateMutable()
-     CGPathAddLines(cgPath, &transform, points, 7)
-     CGPathCloseSubpath(cgPath)
-     
-     // NSBezierPath
-     let uiPath: NSBezierPath = NSBezierPath(CGPath: cgPath)
-     return uiPath
-     }
-     */
     
     class func getAxisAlignedArrowPoints(inout points: Array<NSPoint>,
                                                forLength: CGFloat,
@@ -89,28 +33,6 @@ extension NSBezierPath {
         points.append(NSPoint(x: tailLength, y: -headWidth/2))
         points.append(NSPoint(x: tailLength, y: -tailWidth/2))
         points.append(NSPoint(x: 0, y: -tailWidth/2))
-        
-    }
-    
-    class func transformForStartPoint(startPoint: NSPoint,
-                                      endPoint: NSPoint,
-                                      length: CGFloat) -> NSAffineTransformStruct{
-        
-        let cosine: CGFloat = (endPoint.x - startPoint.x)/length
-        let sine: CGFloat = (endPoint.y - startPoint.y)/length
-        
-        return NSAffineTransformStruct(m11: cosine, m12: sine, m21: -sine, m22: cosine, tX: startPoint.x, tY: startPoint.y)
-        
-    }
-    
-    class func transformForEndPoint(startPoint: NSPoint,
-                                    endPoint: NSPoint,
-                                    length: CGFloat) -> NSAffineTransformStruct{
-        
-        let cosine: CGFloat = (endPoint.x - startPoint.x)/length
-        let sine: CGFloat = (endPoint.y - startPoint.y)/length
-        
-        return NSAffineTransformStruct(m11: cosine, m12: sine, m21: -sine, m22: cosine, tX: endPoint.x, tY: endPoint.y)
         
     }
     
@@ -138,36 +60,34 @@ extension NSBezierPath {
         let cosine:CGFloat  = (endPoint.x - controlPoint2.x) / length
         let sine:CGFloat    = (endPoint.y - controlPoint2.y) / length
         
-        // Objective-C: NSAffineTransform *tr = [NSAffineTransform transform];
-        // Objective-C: [tr setTransformStruct:transformStruct];
+        // Fill NSAffineTransformStruct
+        let transformStruct = NSAffineTransformStruct(m11: cosine, m12: sine, m21: -sine, m22: cosine, tX: endPoint.x, tY: endPoint.y)
         
-        //let transformStruct: NSAffineTransformStruct = { cosine, sine, -sine, cosine, endPoint.x, endPoint.y };
-        let transformStruct: NSAffineTransformStruct = NSAffineTransformStruct(m11: cosine, m12: sine, m21: -sine, m22: cosine, tX: endPoint.x, tY: endPoint.y)
+        // Create NSAffineTransform
+        let tr = NSAffineTransform()
         
-        let tr:NSAffineTransform = NSAffineTransform()
-        
+        // Set NSAffineTransformStruct for NSAffineTransform
         tr.transformStruct = transformStruct
-        //tr = self.transformForStartPoint(startPoint, endPoint: endPoint, length:  CGFloat(length))
         
-        // The points
+        // Points array
         var points = [NSPoint]()
-        //CGFloat(length)0 length
+        // Get arrow points
         self.getAxisAlignedArrowPoints(&points, forLength: 0, tailWidth: tailWidth, headWidth: headWidth, headLength: headLength)
         
-        
+        // create a path with the arrow
         path.moveToPoint(points[0])
         
         for i in 0..<kArrowPointCount{
             path.lineToPoint(points[i])
         }
         
-        //path.closePath()
-        path.fill()
+        // apply the transformation
         path.transformUsingAffineTransform(tr)
+        // path.closePath() // only frame is shown
+        path.fill()
         
         // make the curve
         path.moveToPoint(startPoint)
-        
         path.curveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         
         return path;
